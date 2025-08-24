@@ -1,6 +1,8 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from "react";
+import Navbar from "./components/Navbar/Navbar";
+import Producto from "./components/Producto/Producto";
+import Home from "./components/Home/Home";
 import './App.css';
-import { useEffect, useState } from "react";
 
 function App() {
   const [productos, setProductos] = useState([]);
@@ -8,20 +10,17 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:4000/productos")
       .then(res => res.json())
-      .then(data => setProductos(data));
+      .then(data => setProductos(data))
+      .catch(err => console.error("Error al obtener productos:", err));
   }, []);
 
   return (
     <div className="App">
-      <h1>Tienda de Termos</h1>
-      <div className="grid">
+      <Navbar />
+       <Home />
+      <div className="productos-grid">
         {productos.map(p => (
-          <div key={p.id} className="producto">
-            <img src={p.imagen} alt={p.nombre} width="150" />
-            <h2>{p.nombre}</h2>
-            <p>S/. {p.precio}</p>
-            <button>Añadir al carrito</button>
-          </div>
+          <Producto key={p.id} producto={p} />
         ))}
       </div>
     </div>

@@ -32,6 +32,6 @@ app.get("/productos", async (req, res) => {
 });
 
 
-app.listen(process.env.PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${process.env.PORT}`);
+app.listen(process.env.B_PORT, () => {
+  console.log(`Servidor corriendo en http://localhost:${process.env.B_PORT}`);
 });
