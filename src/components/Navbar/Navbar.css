@@ -8,26 +8,28 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-
+  max-width: 1800px;
+  margin: 0 auto;
 }
 
-.nav-left h1 {
-  font-size: 22px;
-  margin: 0;
-  font-weight: bold;
-  color: #222;
+/* Logo */
+.nav-left img {
+  height: 40px;
+  width: auto;
+  display: block;
 }
 
+/* Links centro */
 .nav-center {
   list-style: none;
   display: flex;
-  gap: 25px;
+  gap: 40px;
 }
 
 .nav-center li a {
   text-decoration: none;
   color: #707070;
-  font-size: 14px;
+  font-size: 15px;
   transition: color 0.3s;
 }
 
@@ -42,15 +44,59 @@
 
 .nav-right a:hover, 
 .nav-center li a:hover {
-  color: #000;
+  color: #F24898;
   transform: scale(1.1); 
 }
+
+.nav-icon-link {
+  display: flex;
+  align-items: center; 
+  gap: 6px; 
+}
+
+.nav-icon {
+  font-size: 16px; 
+  color: inherit;  
+}
+
+.top-slider {
+  background-color: #fd6aae;
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 5px 0;
+  box-sizing: border-box;
+}
+
+.slider-text {
+  display: inline-block;
+  animation: slideText 40s linear infinite;
+  font-size: 13px;
+}
+
+.slider-text span {
+  margin-right: 500px; 
+  display: inline-flex;
+  align-items: center;
+  gap: 5px; 
+}
+
+@keyframes slideText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 
 /* ===== Botón hamburguesa ===== */
 .hamburger {
   display: none;
   font-size: 22px;
   cursor: pointer;
+  color: #F24898;
 }
 
 /* ===== Menú móvil ===== */
@@ -62,13 +108,12 @@
   height: 100vh;
   background: #fff;
   transition: right 0.3s ease-in-out;
-  padding: 40px 0; 
+  padding: 10px 0; 
   z-index: 2000;
   display: flex;
   flex-direction: column;
   align-items: center; 
 }
-
 
 .mobile-menu.open {
   right: 0;
@@ -78,19 +123,31 @@
 .mobile-menu .close-btn {
   background: none;
   border: none;
-  font-size: 32px;
+  font-size: 25px;
   cursor: pointer;
   align-self: flex-end;
   padding: 0 20px;
+  color: #F24898;
+}
+
+/* Logo en menú móvil */
+.mobile-brand {
+  margin-top: 0px;
+}
+
+.mobile-brand img {
+  width: 180px;
+  height: auto;
+  display: block;
 }
 
 .mobile-menu ul {
   list-style: none;
   padding: 0;
-  margin-top: 60px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
   align-items: center; 
 }
 
@@ -99,10 +156,13 @@
   font-size: 16px;
   color: #333;
   transition: color 0.3s;
+  padding: 2px 12px;
 }
 
 .mobile-menu ul li a:hover {
-  color: #f7c02b;
+  background-color:#F24898;
+  text-decoration: underline;
+  color: #fff;
 }
 
 .mobile-icons {

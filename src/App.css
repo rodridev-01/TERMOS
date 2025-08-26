@@ -8,3 +8,38 @@
   gap: 0px;
   justify-content: center;
 }
+
+.title-section {
+  text-align: center;
+  margin: 0; 
+}
+
+.title-section h2 {
+  font-size: 22px;          
+  font-weight: 700;
+  color: #000000;          
+  letter-spacing: 0.5px;      
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+/* Línea decorativa debajo del título */
+.title-section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #F24898;
+  margin: 8px auto 0 auto;
+  border-radius: 2px;
+}
+
+/* Subtítulo opcional */
+.title-section .subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+

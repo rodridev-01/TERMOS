@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./components/Navbar/Navbar";
-import Producto from "./components/Producto/Producto";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Layout from "./components/Layout";
 import Home from "./components/Home/Home";
-import './App.css';
+import Producto from "./components/Producto/Producto";
+import Brands from "./components/Brands/Brands";
+import Productos from "./pages/producto";
+
+import "./App.css";
 
 function App() {
   const [productos, setProductos] = useState([]);
@@ -15,15 +20,34 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Navbar />
-       <Home />
-      <div className="productos-grid">
-        {productos.map(p => (
-          <Producto key={p.id} producto={p} />
-        ))}
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        {/* Layout común con Navbar */}
+        <Route path="/" element={<Layout />}>
+          <Route
+            index
+            element={
+              <>
+                <Home />
+                <div className="title-section">
+                  <h2>Solo lo mejor para ti</h2>
+                </div>
+                <Brands />
+                <div className="title-section">
+                  <h2>Últimos lanzamientos</h2>
+                </div>
+                <div className="productos-grid">
+                  {productos.map((p) => (
+                    <Producto key={p.id} producto={p} />
+                  ))}
+                </div>
+              </>
+            }
+          />
+          <Route path="productos" element={<Productos />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
