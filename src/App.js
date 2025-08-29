@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Layout from "./components/Layout";
 import Home from "./components/Home/Home";
-import Producto from "./components/Producto/Producto";
+import CardProducto from "./components/Cards/Producto/Producto";
 import Brands from "./components/Brands/Brands";
 import Productos from "./pages/producto";
+import AdminHome from "./pages/admin/components/AdminMarcas"; 
+
 
 import "./App.css";
 
@@ -13,7 +15,7 @@ function App() {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/productos")
+    fetch("http://localhost:4000/productos-con-imagen")
       .then(res => res.json())
       .then(data => setProductos(data))
       .catch(err => console.error("Error al obtener productos:", err));
@@ -23,22 +25,22 @@ function App() {
     <Router>
       <Routes>
         {/* Layout común con Navbar */}
+         <Route path="/admin" element={<AdminHome />} />
+
         <Route path="/" element={<Layout />}>
           <Route
             index
             element={
               <>
                 <Home />
-                <div className="title-section">
-                  <h2>Solo lo mejor para ti</h2>
-                </div>
+
                 <Brands />
                 <div className="title-section">
                   <h2>Últimos lanzamientos</h2>
                 </div>
                 <div className="productos-grid">
                   {productos.map((p) => (
-                    <Producto key={p.id} producto={p} />
+                    <CardProducto key={p.id} producto={p} />
                   ))}
                 </div>
               </>

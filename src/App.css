@@ -2,13 +2,6 @@
   text-align: center;
 }
 
-.productos-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0px;
-  justify-content: center;
-}
-
 .title-section {
   text-align: center;
   margin: 0; 
@@ -21,7 +14,7 @@
   letter-spacing: 0.5px;      
   position: relative;
   display: inline-block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 15px;
 }
 
 /* Línea decorativa debajo del título */
@@ -29,10 +22,9 @@
   content: "";
   display: block;
   width: 60px;
-  height: 3px;
+  height: 2px;
   background-color: #F24898;
-  margin: 8px auto 0 auto;
-  border-radius: 2px;
+  margin: 5px auto 0 auto;
 }
 
 /* Subtítulo opcional */
@@ -43,3 +35,12 @@
   margin-top: 0.5rem;
 }
 
+/* --- Responsive: slider horizontal --- */
+@media screen and (max-width: 768px) {
+  .title-section h2 {
+    font-size: 18px;          
+    font-weight: 600;
+    color: #000000;          
+    letter-spacing: 0.5px;      
+  }
+}

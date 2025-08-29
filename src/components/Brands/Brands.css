@@ -1,47 +1,73 @@
+/* Desktop: fila horizontal centrada */
 .brands-container {
   display: flex;
-  justify-content: center; 
-  gap: 20px; 
-  margin: 20px;
-  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+  flex-wrap: nowrap;   
+  overflow: hidden;   
 }
 
 .brand-card {
-  position: relative; 
-  width: 400px; 
-  height: 180px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
-  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  width: 300px;
+  height: 150px;
   border-radius: 8px;
-  overflow: hidden; 
-}
-
-.brand-card:hover {
-  transform: translateY(-5px);
+  overflow: hidden;
+  flex: 0 0 auto;
 }
 
 .brand-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px; 
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.brand-card:hover img {
+  transform: scale(1.05); 
 }
 
 .brand-card p {
-  position: absolute; 
-  bottom: 0;            
+  position: absolute;
+  bottom: 0;
   left: 0;
-  width: 100%;          
+  width: 100%;
   margin: 0;
   font-weight: bold;
-  color: #fff;          
-  background-color: rgba(0, 0, 0, 0.5); 
-  padding: 0.5rem 0;   
-  border-radius: 0 0 10px 10px;  
-  text-align: center;    
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 0;
+  border-radius: 0 0 10px 10px;
+  text-align: center;
 }
 
 .brand-card:hover p {
-  background-color: rgba(0, 0, 0, 0.6); 
+  background-color: rgba(0, 0, 0, 0.6);
   color: #F24898;
+}
+
+/* Mobile: slider horizontal arrastrando con el dedo */
+@media (max-width: 768px) {
+  .brands-container {
+    justify-content: flex-start;
+    overflow-x: auto;              
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;       
+    gap: 15px; 
+    padding: 0 20px;
+  }
+
+  .brands-container::-webkit-scrollbar { display: none; } 
+
+  .brand-card {
+  width: 270px;
+  height: 120px;
+  }
+
+  .brand-card p {
+    font-size: 15px;
+  }
 }

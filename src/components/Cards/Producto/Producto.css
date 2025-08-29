@@ -1,0 +1,61 @@
+.productos-grid {
+  display: flex;
+  flex-wrap: nowrap;             
+  gap: 12px;
+  justify-content: flex-start;   
+  overflow-x: auto;              
+  scroll-snap-type: x mandatory; 
+  -webkit-overflow-scrolling: touch;
+  max-width: 1920px;
+  margin: 0 auto;      
+  padding: 0 10px;
+  scrollbar-width: none;       
+}
+
+.productos-grid::-webkit-scrollbar {
+  display: none;                 
+}
+
+.producto {
+  padding-left: 30px;
+  width: 200px;                  
+  min-height: 200px;
+  text-align: left;
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: #666;
+  flex: 0 0 auto;                
+  scroll-snap-align: start;      
+}
+
+.producto:hover h2 {
+  text-decoration: underline;
+}
+
+.producto img {
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.producto h2 {
+  margin: 0px;
+  font-size: 12px;
+}
+
+.producto p {
+  font-size: 14px;
+  margin: 5px 0;
+  color: black;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .productos-grid {         
+    gap: 0px;   
+    margin: 0;      
+  }
+
+  .producto {
+    width: 150px;                  
+    min-height: 150px;    
+  }
+}

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import {FaTags, FaUser, FaShoppingCart, FaSearch, FaBars, FaCheckCircle, FaTruck} from "react-icons/fa";
+import { 
+  FaTags, FaUser, FaShoppingCart, FaSearch, 
+  FaBars, FaCheckCircle, FaTruck, FaGift 
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
@@ -34,7 +37,7 @@ function Navbar() {
       <nav className="navbar">
         {/* Izquierda - Marca */}
         <div className="nav-left">
-          <img src="images/Navbar.png" alt="" />
+          <img src="images/Navbar.png" alt="logo" />
         </div>
 
         {/* Centro - Links (solo en desktop) */}
@@ -48,6 +51,12 @@ function Navbar() {
             </a>
           </li>
           <li><a href="/ofertas">Ofertas</a></li>
+          <li>
+            <a href="/se-nos-cayeron" className="nav-icon-link">
+              <FaGift className="nav-icon" />
+              Se nos cayeron
+            </a>
+          </li>
           <li><a href="/blog">Blog</a></li>
         </ul>
 
@@ -74,6 +83,7 @@ function Navbar() {
             <li><Link to="/productos" onClick={toggleMenu}>Productos</Link></li>
             <li><Link to="/categorias" onClick={toggleMenu}>Categorías</Link></li>
             <li><Link to="/ofertas" onClick={toggleMenu}>Ofertas</Link></li>
+            <li><Link to="/se-nos-cayeron" onClick={toggleMenu}>Se nos cayeron</Link></li>
             <li><Link to="/blog" onClick={toggleMenu}>Blog</Link></li>
             <li className="mobile-icons">
               <a href="/buscar"><FaSearch /></a>
