@@ -4,7 +4,7 @@ function Productos() {
   return (
     <div style={{ padding: "50px", textAlign: "center" }}>
       <h1>📦 Página de Productos</h1>
-      <p>Proximamente...</p>
+      <p>Próximamente...</p>
     </div>
   );
 }

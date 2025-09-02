@@ -1,18 +1,24 @@
-import { Router } from "express";
+import express from "express";
 import {
   getProductos,
-  getProducto,  
-  addProducto,
+  getProductoById,
+  createProducto,
   updateProducto,
   deleteProducto,
 } from "../controllers/productosController.js";
+import upload from "../middleware/upload.js";
 
-const router = Router();
+const router = express.Router();
 
-router.get("/", getProductos);     
-router.get("/:id", getProducto);  
-router.post("/", addProducto);     
-router.put("/:id", updateProducto);
-router.delete("/:id", deleteProducto); 
+router.get("/", getProductos);
+
+router.get("/:id", getProductoById);
+
+router.post("/", upload.single("imagen"), createProducto);
+
+router.put("/:id", upload.single("imagen"), updateProducto);
+
+// Eliminar producto
+router.delete("/:id", deleteProducto);
 
 export default router;

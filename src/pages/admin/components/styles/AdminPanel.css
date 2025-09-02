@@ -1,0 +1,265 @@
+/* Contenedor principal */
+.admin-container {
+  padding: 30px;
+  position: relative;
+  border-radius: 5px;
+}
+
+/* Header con título y botón */
+.header-actions {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: #D9D9D9 solid 1px;
+  padding-bottom: 8px; 
+}
+
+.title-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.header-actions h2 {
+  font-size: 17px;
+  color: #6D6D6D;;
+  margin: 0;
+}
+
+.header-actions .icon {
+  font-size: 20px;
+  color: #f380b9; 
+}
+
+.btn-add {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #f76cac;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-add:hover {
+  background-color: #f24898;
+}
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 15px; 
+}
+
+.preview-container img{
+  max-width: 200px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto; 
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Botón de cerrar modal */
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Formulario dentro del modal */
+.form-marcas {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.form-marcas input[type="text"],
+.form-marcas textarea,
+.form-marcas input[type="file"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.form-marcas button {
+  background: #f76cac;
+  border: none;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+
+.form-marcas button:hover {
+  background: #F24898;
+}
+
+/* Grid de marcas */
+.marcas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.marca-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+
+.marca-card:hover {
+  transform: translateY(-1px);
+}
+
+.marca-logo {
+  width: 100%;
+  height: 160px;   
+  object-fit: cover;  
+  background: #fafafa;
+  border-bottom: 1px solid #eee;
+}
+
+.no-logo {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ddd;
+  color: #555;
+  font-weight: bold;
+}
+
+.marca-info h3 {
+  margin: 0px;
+  font-size: 15px;
+  color: #333;
+}
+
+.marca-info p {
+  margin: 5px 0 10px 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.marca-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.marca-actions button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.btn-confirm{
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-confirm:hover {
+  background-color: #c0392b;
+}
+
+.btn-edit {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #357ab8;
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+.productos-table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.productos-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+.productos-table th,
+.productos-table td {
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.productos-table th {
+  background: #f76cac;
+  color: white;
+}
+
+.producto-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+
+
+@media (max-width: 768px) {
+  .header-actions {
+    flex-direction: column;   
+    align-items: flex-start;  
+    gap: 12px;                
+  }
+}

@@ -8,6 +8,9 @@ import path from "path"; // <-- Agregado
 import { errorHandler } from "./middleware/errorHandler.js";
 import productosRoutes from "./routes/productRoute.js";
 import marcaRoutes from "./routes/marcaRoute.js";
+import categoriaRoutes from "./routes/categoriaRoute.js";
+import productoRoutes from "./routes/productRoute.js";
+
 
 dotenv.config();
 const app = express();
@@ -24,7 +27,9 @@ app.use(limiter);
 app.use("/uploads", express.static(path.join("public", "uploads"))); 
 
 app.use("/productos", productosRoutes);
-app.use("/marca", marcaRoutes);
+app.use("/api/marcas", marcaRoutes);
+app.use("/api/categorias", categoriaRoutes);
+app.use("/api/productos", productoRoutes);
 
 // Middleware de errores
 app.use(errorHandler);

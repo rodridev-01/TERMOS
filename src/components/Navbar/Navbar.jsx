@@ -45,12 +45,12 @@ function Navbar() {
           <li><Link to="/">Inicio</Link></li>
           <li><Link to="/productos">Productos</Link></li>
           <li>
-            <a href="/categorias" className="nav-icon-link">
+            <Link to="/categorias" className="nav-icon-link">
               <FaTags className="nav-icon" />
               Categorías
-            </a>
+            </Link>
           </li>
-          <li><a href="/ofertas">Ofertas</a></li>
+          <li><Link to="/ofertas">Ofertas</Link></li>
           <li>
             <a href="/se-nos-cayeron" className="nav-icon-link">
               <FaGift className="nav-icon" />

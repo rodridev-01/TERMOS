@@ -34,8 +34,12 @@ export const createMarca = async (req, res) => {
 
 export const updateMarca = async (req, res) => {
   try {
-    const { nombre, descripcion } = req.body;
-    const logo = req.file ? `/uploads/marcas/${req.file.filename}` : null;
+    const { nombre, descripcion, logoActual } = req.body;
+
+    let logo = logoActual;
+    if (req.file) {
+      logo = `/uploads/marcas/${req.file.filename}`;
+    }
 
     const updated = await Marca.update(req.params.id, { nombre, descripcion, logo });
     res.json(updated);
@@ -44,6 +48,7 @@ export const updateMarca = async (req, res) => {
     res.status(500).json({ error: "Error al actualizar la marca" });
   }
 };
+
 
 export const deleteMarca = async (req, res) => {
   try {

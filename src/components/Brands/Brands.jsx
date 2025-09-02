@@ -1,20 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Brands.css";
 
-const marcas = [
-  { id: 1, nombre: "HydroJug", img: "/images/brands/HydroJug.webp" },
-  { id: 2, nombre: "Owala", img: "/images/brands/Owala.webp" },
-  { id: 3, nombre: "Stanley", img: "/images/brands/Stanley.webp" },
-  { id: 4, nombre: "Personalizados", img: "/images/brands/Decorate.jpeg" },
-];
-
 const Brands = () => {
+  const [categorias, setCategorias] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCategorias = async () => {
+      try {
+        const res = await fetch("http://localhost:4000/api/categorias");
+        if (!res.ok) throw new Error("Error al cargar categorías");
+        const data = await res.json();
+        setCategorias(data);
+      } catch (error) {
+        console.error("Error al obtener categorías:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCategorias();
+  }, []);
+
+  if (loading) return <p>Cargando categorías...</p>;
+
   return (
     <div className="brands-container">
-      {marcas.map((marca) => (
-        <div key={marca.id} className="brand-card">
-          <img src={marca.img} alt={marca.nombre} />
-          <p>{marca.nombre}</p>
+      {categorias.map((cat) => (
+        <div key={cat.id} className="brand-card">
+          <img
+            src={`http://localhost:3000${cat.imagen}`} 
+            alt={cat.nombre}
+          />
+          <p>{cat.nombre}</p>
         </div>
       ))}
     </div>

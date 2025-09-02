@@ -5,9 +5,17 @@ import Layout from "./components/Layout";
 import Home from "./components/Home/Home";
 import CardProducto from "./components/Cards/Producto/Producto";
 import Brands from "./components/Brands/Brands";
-import Productos from "./pages/producto";
-import AdminHome from "./pages/admin/components/AdminMarcas"; 
+import Productos from "./pages/Productos";
+import Categorias from "./pages/Categorias";
+import Ofertas from "./pages/Ofertas";
 
+import ProductoDetalle from "./pages/ProductoDetalle";
+
+//ADMIN
+import AdminHome from "./pages/admin/Home"; 
+import AdminBrand from "./pages/admin/components/AdminMarcas"; 
+import AdminCategorias from "./pages/admin/components/AdminCategorias"; 
+import AdminProductos from "./pages/admin/components/AdminProductos"; 
 
 import "./App.css";
 
@@ -15,7 +23,7 @@ function App() {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/productos-con-imagen")
+    fetch("http://localhost:4000/api/productos")
       .then(res => res.json())
       .then(data => setProductos(data))
       .catch(err => console.error("Error al obtener productos:", err));
@@ -24,8 +32,13 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Layout común con Navbar */}
-         <Route path="/admin" element={<AdminHome />} />
+        {/* ADMIN con rutas anidadas */}
+        <Route path="/admin" element={<AdminHome />}>
+          <Route index element={<h2>Bienvenido al panel admin</h2>} />
+          <Route path="marcas" element={<AdminBrand />} />
+          <Route path="categorias" element={<AdminCategorias />} />
+          <Route path="productos" element={<AdminProductos />} />
+        </Route>
 
         <Route path="/" element={<Layout />}>
           <Route
@@ -33,7 +46,6 @@ function App() {
             element={
               <>
                 <Home />
-
                 <Brands />
                 <div className="title-section">
                   <h2>Últimos lanzamientos</h2>
@@ -47,6 +59,9 @@ function App() {
             }
           />
           <Route path="productos" element={<Productos />} />
+          <Route path="categorias" element={<Categorias />} />
+          <Route path="productos/:id" element={<ProductoDetalle />} />
+          <Route path="Ofertas" element={<Ofertas />} />
         </Route>
       </Routes>
     </Router>
